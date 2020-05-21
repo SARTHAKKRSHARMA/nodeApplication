@@ -9,6 +9,18 @@ const expressSession = require('express-session')
 const app = express()
 const port = process.env.PORT || 3000
 
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Sarthak:10111971@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+
+
 mongoose.connect('mongodb+srv://Sarthak:<password>@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority/demoDb',{
     useCreateIndex:true,
     useNewUrlParser:true,
