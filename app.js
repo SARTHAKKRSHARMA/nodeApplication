@@ -9,7 +9,7 @@ const expressSession = require('express-session')
 const app = express()
 const port = process.env.PORT || 3000
 
-mongoose.connect('mongodb://127.0.0.1:27017/demoDB',{
+mongoose.connect('mongodb+srv://Sarthak:<password>@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority/demoDb',{
     useCreateIndex:true,
     useNewUrlParser:true,
     useUnifiedTopology:true
