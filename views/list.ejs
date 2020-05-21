@@ -1,0 +1,11 @@
+<h1>This is your friend list</h1>
+<%if(currentUser.friends.length===0){%>
+    <h2>You haven't made any friend's yet</h2>
+<%}else{%>
+    <ol>
+        <%currentUser.friends.forEach((friend) => {%>
+            <li><a href="/user/<%= friend %>"><%= friend %></a></li>
+        <%})%>
+    </ol>  
+<%}%>
+

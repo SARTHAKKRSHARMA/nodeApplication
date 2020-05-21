@@ -1,0 +1,13 @@
+<h1>Here is list of people who sent you friend request</h1>
+
+<%if(user.wantToBeFriends.length ===0){%>
+    <h3>You've no new or pending friend request</h3>
+<%}else{%>
+    <%user.wantToBeFriends.forEach((friend) => {%>
+        <li><%= friend %></li>
+        <form action="/confirmRequest/<%=friend %>" method="post">
+            <button>Confirm Request</button>
+        </form>
+    <%})%>
+<%}%>
+

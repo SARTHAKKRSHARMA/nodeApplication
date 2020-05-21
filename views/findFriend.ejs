@@ -1,0 +1,24 @@
+<h1>Here are users with whom you can start your friendship</h1>
+<a href="/">Go to Homepage</a>
+
+<%if(users.length===0){%>
+    <h1>Oops No User found</h1>
+<%}else{%>
+    <%users.forEach((user) => {%>
+        <%if(user.wantToBeFriends.includes(currentUser.username)){%>
+            <li> <a href="/user/<%=user.username%>"><%=user.username%></a></li>
+            <p>You have alreay sent him/her friend request</p>
+        <%}else if(user.friends.includes(currentUser.username)){%>
+            <li> <a href="/user/<%=user.username%>"><%=user.username%></a></li>
+            <p>You both are friends already</p>
+        <%}else{%>
+            <li> <a href="/user/<%=user.username%>"><%=user.username%></a></li>
+            <form action="/<%=user._id%>/addFriend/<%=username%>" method="post">
+                <button>Send Friend Request</button>
+            </form>
+        <%}%>
+        
+    <%})%>
+<%}%>
+
+

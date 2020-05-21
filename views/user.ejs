@@ -1,0 +1,27 @@
+<h1>This page contains information about <%= user.username %></h1>
+<a href="/">Go to homepage</a>
+<p>Right now we don't have much information about <%= user.username %></p>
+<p>But we know about <%= user.username %>'s friends.</p>
+
+<%if(user.friends.length===0){%>
+    <h1><%= user.username %> haven't made friends yet</h1>
+<%}else{%>
+    <ol>
+        <% user.friends.forEach((friend) => {%>
+            <li><a href="/user/<%=friend%>"><%=friend%></a></li>
+        <%})%>
+    </ol>
+    
+<%}%>
+
+
+<%if(user.wantToBeFriends.includes(currentUser.username)){%>
+    <p><Strong>You have already sent him friend request</Strong></p>
+<%}else if(user.friends.includes(currentUser.username)){%>
+    <p><strong>You both are friends already</strong></p>
+<%}else{%>
+    <p><Strong>You can send him friend request</Strong></p>
+    <form action="/<%=user._id%>/addFriend/<%=user.username%>" method="post">
+        <button>Send Friend Request</button>
+    </form>
+<%}%>

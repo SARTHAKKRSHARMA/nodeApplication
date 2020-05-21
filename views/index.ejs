@@ -1,0 +1,14 @@
+<h1>This is HomePage</h1>
+<%if(currentUser){%>
+    <h3>Welcome <i><%=currentUser.username%></i></h3>
+    <form action="/find" method="post">
+        <input type="text" name="user" placeholder="Search Friends||try admin">
+        <button>Find</button>    
+    </form>
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/gogaga/list.html">Friend List</a></li>
+    <li><a href="/addFriend">Check Out requests</a></li>
+<%}else{%>
+    <li><a href="/register">Register</a></li>
+    <li><a href="/login">Login</a></li>
+<%}%>
