@@ -14,18 +14,18 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Sarthak:10111971@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
+  const collection = client.db("demoDB").collection("User");
   // perform actions on the collection object
   client.close();
 });
 
 
 
-mongoose.connect('mongodb+srv://Sarthak:<password>@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority/demoDb',{
-    useCreateIndex:true,
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-})
+// mongoose.connect('mongodb+srv://Sarthak:<password>@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority/demoDb',{
+//     useCreateIndex:true,
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true
+// })
 
 const userSchema = new mongoose.Schema({
     username:{
