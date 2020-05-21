@@ -10,22 +10,11 @@ const app = express()
 const port = process.env.PORT || 3000
 
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Sarthak:10111971@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("demoDB").collection("User");
-  // perform actions on the collection object
-  client.close();
-});
-
-
-
-// mongoose.connect('mongodb+srv://Sarthak:<password>@cluster0-adffp.gcp.mongodb.net/test?retryWrites=true&w=majority/demoDb',{
-//     useCreateIndex:true,
-//     useNewUrlParser:true,
-//     useUnifiedTopology:true
-// })
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://127.0.0.1:27017/DemoDB',{
+    useCreateIndex:true,
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+})
 
 const userSchema = new mongoose.Schema({
     username:{
@@ -65,6 +54,8 @@ app.use((req, res, next) => {
     res.locals.currentUser = req.user
     next()   
 })
+
+
 
 function isLoggenIn(req, res, next){
     if(req.isAuthenticated()){
